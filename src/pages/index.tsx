@@ -1,3 +1,8 @@
-export default function Home() {
-  return <h1>Hello world</h1>
+import { FC } from 'react'
+import Characters from './Characters'
+
+const Home: FC = () => {
+  return <Characters />
 }
+
+export default Home

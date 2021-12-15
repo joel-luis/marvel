@@ -28,6 +28,12 @@ export const CardWrapper = styled.div`
   }
 `
 
+export const ComicsName = styled.div`
+  width: 600px;
+  display: flex;
+  align-items: center;
+`
+
 export const Avatar = styled.img`
   width: 50px;
   height: 50px;
@@ -41,7 +47,12 @@ export const NameWrapper = styled.div`
 `
 
 export const SeriesWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
   color: var(--gray-700);
   font-weight: normal;
   font-size: 12px;
+  justify-content: center;
 `

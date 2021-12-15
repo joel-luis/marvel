@@ -1,26 +1,22 @@
 import { FC } from 'react'
-import CharactersProps from 'types/characters'
+import ComicsProps from 'types/comics'
 
 import * as Style from './styled'
 
-const Characters: FC<CharactersProps> = ({ characters }) => {
+const Characters: FC<ComicsProps> = ({ comics }) => {
   return (
     <Style.Wrapper>
-      {characters?.map((character) => {
+      {comics?.map((comics) => {
         return (
-          <Style.CardWrapper key={character.id}>
-            <Style.Avatar
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt={character.name}
-            />
-            <Style.NameWrapper>{character.name}</Style.NameWrapper>
-            {character.series.items.map((serie) => {
-              return (
-                <Style.SeriesWrapper key={serie.resourceURI}>
-                  {serie.name}
-                </Style.SeriesWrapper>
-              )
-            })}
+          <Style.CardWrapper key={comics.id}>
+            <Style.ComicsName>
+              <Style.Avatar
+                src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                alt={comics.title}
+              />
+              <Style.NameWrapper>{comics.title}</Style.NameWrapper>
+            </Style.ComicsName>
+            <Style.SeriesWrapper>{comics.series.name}</Style.SeriesWrapper>
           </Style.CardWrapper>
         )
       })}

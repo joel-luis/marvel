@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
   height: 100%;
 `
 
@@ -13,8 +12,7 @@ export const CardWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 88px;
-  max-width: 1140px;
-  margin: 5px 20px;
+  margin: 5px 0;
   background: var(--white);
   border-radius: 4px;
   box-shadow: 0px 6px 12px #00000029;
@@ -22,10 +20,6 @@ export const CardWrapper = styled.div`
   color: var(--gray-700);
   font-weight: bold;
   align-items: center;
-
-  @media (max-width: 1200px) {
-    max-width: 90%;
-  }
 `
 
 export const ComicsName = styled.div`

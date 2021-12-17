@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import api from '../services/api'
+import { useRouter } from 'next/router'
 
 import Characters from '../components/Characters'
 import ComicsProps from 'types/comics'
@@ -19,6 +20,8 @@ const Home: FC<ComicsProps> = ({ comics }) => {
   const startIndex = currentPage * intensPerPage
   const endIndex = startIndex + intensPerPage
   const currentComics = comics.slice(startIndex, endIndex)
+
+  const router = useRouter()
 
   const hanldeInputFocus = () => {
     setIsFocused(true)
@@ -40,7 +43,10 @@ const Home: FC<ComicsProps> = ({ comics }) => {
             onFocus={hanldeInputFocus}
             onBlur={handleInputBlur}
             value={search}
-            onChange={(ev) => setSearch(ev.target.value)}
+            onChange={(ev) => {
+              setSearch(ev.target.value)
+              router.push({ pathname: '/', query: { title: ev.target.value } })
+            }}
           />
           <FaSistrix size="24px" color="var(--gray-300)" />
         </Styled.Input>
@@ -59,16 +65,16 @@ const Home: FC<ComicsProps> = ({ comics }) => {
 
 export default Home
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const title = query.title
   const comics = await api
-    .get('/comics')
+    .get(title ? `/comics?titleStartsWith=${title}` : '/comics')
     .then((response) => response.data.data.results)
     .catch((err) => console.log(err))
 
   return {
     props: {
       comics
-    },
-    revalidate: 60 * 60 * 24 // 24h
+    }
   }
 }

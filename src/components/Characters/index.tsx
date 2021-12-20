@@ -3,12 +3,12 @@ import ComicsProps from 'types/comics'
 
 import * as Style from './styled'
 
-const Characters: FC<ComicsProps> = ({ comics }) => {
+const Characters: FC<ComicsProps> = ({ comics, setShowModal }) => {
   return (
     <Style.Wrapper>
       {comics?.map((comics) => {
         return (
-          <Style.CardWrapper key={comics.id}>
+          <Style.CardWrapper key={comics.id} onClick={setShowModal}>
             <Style.ComicsName>
               <Style.Avatar
                 src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}

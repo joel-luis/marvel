@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  cursor: pointer;
 `
 
 export const CardWrapper = styled.div`
@@ -23,7 +24,7 @@ export const CardWrapper = styled.div`
 `
 
 export const ComicsName = styled.div`
-  width: 600px;
+  width: 100%;
   display: flex;
   align-items: center;
 `
@@ -38,6 +39,10 @@ export const Avatar = styled.img`
 export const NameWrapper = styled.div`
   color: var(--gray-700);
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `
 
 export const SeriesWrapper = styled.div`

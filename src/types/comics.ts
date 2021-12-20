@@ -12,8 +12,6 @@ export type ResponseData = {
 
 interface ComicsProps {
   comics: ResponseData[]
-  setShowModal?: () => void
-  closeModal?: () => void
 }
 
 export default ComicsProps

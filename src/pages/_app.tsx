@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import GlobalStyles from '../styles/global'
+import ModalProvider from 'context/modalContext'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -9,8 +10,10 @@ function App({ Component, pageProps }: AppProps) {
         <title>Marvel</title>
         <meta name="description" content="NextJS" />
       </Head>
-      <GlobalStyles />
-      <Component {...pageProps} />
+      <ModalProvider>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </ModalProvider>
     </>
   )
 }

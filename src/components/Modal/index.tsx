@@ -1,19 +1,14 @@
 import React, { FC } from 'react'
-
-import ComicsProps from 'types/comics'
+import { useModal } from 'context/modalContext'
 
 import * as Styled from './styled'
 
-const Modal: FC<ComicsProps> = ({ comics, closeModal }) => {
+const Modal: FC = () => {
+  const { closeModal } = useModal()
+
   return (
     <Styled.ModalBackground onClick={closeModal}>
-      {comics.map((comic) => {
-        return (
-          <Styled.ModalWrapper key={comic.id}>
-            {comic.title}
-          </Styled.ModalWrapper>
-        )
-      })}
+      <Styled.ModalWrapper>olá</Styled.ModalWrapper>
     </Styled.ModalBackground>
   )
 }

@@ -4,12 +4,20 @@ type ModalContextProviderProps = {
   children: ReactNode
 }
 
-const ModalContext = createContext({} as any)
+type ModaControlProps = {
+  showModal: boolean
+  openModal: (content: unknown) => void
+  closeModal: () => void
+}
+
+const ModalContext = createContext({} as ModaControlProps)
 
 export default function ModalProvider({ children }: ModalContextProviderProps) {
   const [showModal, setShowModal] = useState(false)
 
-  const openModal = () => setShowModal(true)
+  const openModal = (content: unknown) => {
+    if (content) return setShowModal(true)
+  }
   const closeModal = () => setShowModal(false)
 
   return (
